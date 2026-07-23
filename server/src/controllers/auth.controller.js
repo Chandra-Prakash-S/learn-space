@@ -101,4 +101,11 @@ const login = async (req, res) => {
   }
 };
 
-export { register, login };
+const getMe = async (req, res) => {
+  res.status(200).json({
+    success: true,
+    user: req.user,
+  });
+};
+
+export { register, login, getMe };
