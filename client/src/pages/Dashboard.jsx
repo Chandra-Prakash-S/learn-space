@@ -1,16 +1,24 @@
-import { Card, CardContent } from "@/components/ui/card";
+import StatsGrid from "@/components/dashboard/StatsGrid";
+import RecentCourses from "@/components/dashboard/RecentCourses";
+import UpcomingSessions from "@/components/dashboard/UpcomingSessions";
+import QuickActions from "@/components/dashboard/QuickActions";
 
 function Dashboard() {
   return (
-    <Card className="border-slate-800 bg-slate-900 text-white">
-      <CardContent className="p-6">
-        <h1 className="text-2xl font-bold">Dashboard</h1>
+    <div className="space-y-10">
+      <section>
+        <StatsGrid />
+      </section>
 
-        <p className="mt-2 text-slate-400">
-          Welcome to LearnSpace.
-        </p>
-      </CardContent>
-    </Card>
+      <section className="grid gap-8 lg:grid-cols-2">
+        <RecentCourses />
+        <UpcomingSessions />
+      </section>
+
+      <section>
+        <QuickActions />
+      </section>
+    </div>
   );
 }
 
