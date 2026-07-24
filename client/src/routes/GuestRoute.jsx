@@ -2,7 +2,7 @@ import { Navigate, Outlet } from "react-router-dom";
 
 import { useCurrentUser } from "@/hooks/auth/useCurrentUser";
 
-function ProtectedRoute() {
+function GuestRoute() {
   const { data, isLoading } = useCurrentUser();
 
   if (isLoading) {
@@ -13,11 +13,11 @@ function ProtectedRoute() {
     );
   }
 
-  if (!data?.success) {
-    return <Navigate to="/login" replace />;
+  if (data?.success) {
+    return <Navigate to="/dashboard" replace />;
   }
 
   return <Outlet />;
 }
 
-export default ProtectedRoute;
+export default GuestRoute;
