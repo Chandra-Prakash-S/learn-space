@@ -3,6 +3,13 @@ import User from "../models/User.js";
 import generateToken from "../utils/generateToken.js";
 import formatUserResponse from "../utils/formatUserResponse.js";
 
+const cookieOptions = {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: "strict",
+  maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+};
+
 const register = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -30,16 +37,18 @@ const register = async (req, res) => {
     // Generate JWT
     const token = generateToken(user._id);
 
-    res.status(201).json({
+    // Store JWT in HTTP-only cookie
+    res.cookie("token", token, cookieOptions);
+
+    return res.status(201).json({
       success: true,
       message: "User registered successfully",
-      token,
       user: formatUserResponse(user),
     });
   } catch (error) {
     console.error(error);
 
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: "Internal server error",
     });
@@ -73,30 +82,45 @@ const login = async (req, res) => {
       });
     }
 
-    // Generate token
+    // Generate JWT
     const token = generateToken(user._id);
 
-    res.status(200).json({
+    // Store JWT in HTTP-only cookie
+    res.cookie("token", token, cookieOptions);
+
+    return res.status(200).json({
       success: true,
       message: "Login successful",
-      token,
       user: formatUserResponse(user),
     });
   } catch (error) {
     console.error(error);
 
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: "Internal server error",
     });
   }
 };
 
+const logout = (req, res) => {
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "strict",
+  });
+
+  return res.status(200).json({
+    success: true,
+    message: "Logged out successfully",
+  });
+};
+
 const getMe = async (req, res) => {
-  res.status(200).json({
+  return res.status(200).json({
     success: true,
     user: req.user,
   });
 };
 
-export { register, login, getMe };
+export { register, login, logout, getMe };

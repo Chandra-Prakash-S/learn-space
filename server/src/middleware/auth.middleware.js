@@ -3,18 +3,15 @@ import User from "../models/User.js";
 
 const protect = async (req, res, next) => {
   try {
-    const authHeader = req.headers.authorization;
+    // Get token from HTTP-only cookie
+    const token = req.cookies.token;
 
-    // Check if Authorization header exists
-    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    if (!token) {
       return res.status(401).json({
         success: false,
         message: "Not authorized, token missing",
       });
     }
-
-    // Extract token
-    const token = authHeader.split(" ")[1];
 
     // Verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
@@ -34,6 +31,8 @@ const protect = async (req, res, next) => {
 
     next();
   } catch (error) {
+    console.error(error);
+
     return res.status(401).json({
       success: false,
       message: "Invalid or expired token",
