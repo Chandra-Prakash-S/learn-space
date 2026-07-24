@@ -37,6 +37,10 @@ const userSchema = new mongoose.Schema(
   }
 );
 
+userSchema.set("toJSON", {
+  versionKey: false,
+});
+
 const User = mongoose.model("User", userSchema);
 
 export default User;

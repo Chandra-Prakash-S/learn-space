@@ -3,7 +3,12 @@ import mongoose from "mongoose";
 
 const getCourses = async (req, res) => {
   try {
-    const courses = await Course.find();
+    const courses = await Course.find()
+      .select(
+        "title description instructor thumbnail category level duration"
+      )
+      .sort({ createdAt: -1 })
+      .lean();
 
     res.status(200).json({
       success: true,

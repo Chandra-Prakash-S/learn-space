@@ -75,6 +75,10 @@ const courseSchema = new mongoose.Schema(
   }
 );
 
+courseSchema.set("toJSON", {
+  versionKey: false,
+});
+
 const Course = mongoose.model("Course", courseSchema);
 
 export default Course;

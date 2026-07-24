@@ -1,25 +1,30 @@
 import dotenv from "dotenv";
-import mongoose from "mongoose";
 
 import connectDB from "../config/db.js";
+
 import Course from "../models/Course.js";
+import LiveSession from "../models/LiveSession.js";
+
 import courses from "./courses.seed.js";
+import liveSessions from "./liveSessions.seed.js";
 
 dotenv.config();
 
-const importData = async () => {
+const seedDatabase = async () => {
   try {
     await connectDB();
 
-    // Delete existing courses
+    // Clear existing data
     await Course.deleteMany();
+    await LiveSession.deleteMany();
 
-    console.log("🗑️ Existing courses removed");
+    console.log("🗑️ Existing data removed");
 
-    // Insert fresh data
+    // Seed fresh data
     await Course.insertMany(courses);
+    await LiveSession.insertMany(liveSessions);
 
-    console.log("✅ Courses seeded successfully");
+    console.log("✅ Database seeded successfully");
 
     process.exit(0);
   } catch (error) {
@@ -28,4 +33,4 @@ const importData = async () => {
   }
 };
 
-importData();
+seedDatabase();
