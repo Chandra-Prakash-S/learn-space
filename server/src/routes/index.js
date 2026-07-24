@@ -4,6 +4,8 @@ import authRoutes from "./auth.routes.js";
 import courseRoutes from "./course.routes.js";
 import liveSessionRoutes from "./liveSession.routes.js";
 
+import postRoutes from "./post.routes.js";
+
 const router = express.Router();
 
 // Health Check
@@ -18,5 +20,6 @@ router.get("/", (req, res) => {
 router.use("/auth", authRoutes);
 router.use("/courses", courseRoutes);
 router.use("/live-sessions", liveSessionRoutes);
+router.use("/posts", postRoutes);
 
 export default router;
