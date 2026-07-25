@@ -1,20 +1,22 @@
 import { Navigate, Outlet } from "react-router-dom";
 
+import PageLoader from "@/components/common/PageLoader";
 import { useCurrentUser } from "@/hooks/auth/useCurrentUser";
 
 function GuestRoute() {
   const { data, isLoading } = useCurrentUser();
 
   if (isLoading) {
-    return (
-      <div className="flex min-h-screen items-center justify-center">
-        Loading...
-      </div>
-    );
+    return <PageLoader />;
   }
 
-  if (data?.success) {
-    return <Navigate to="/dashboard" replace />;
+  if (data?.user) {
+    return (
+      <Navigate
+        to="/dashboard"
+        replace
+      />
+    );
   }
 
   return <Outlet />;
