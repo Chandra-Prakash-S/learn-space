@@ -4,6 +4,8 @@ function LessonList({
   lessons,
   selectedLesson,
   onSelectLesson,
+  completedLessons,
+  onToggleComplete,
 }) {
   if (!lessons?.length) {
     return (
@@ -41,6 +43,10 @@ function LessonList({
             isSelected={
               selectedLesson?.title === lesson.title
             }
+            isCompleted={completedLessons.includes(
+              lesson.title
+            )}
+            onToggleComplete={onToggleComplete}
             onSelect={onSelectLesson}
           />
         ))}
