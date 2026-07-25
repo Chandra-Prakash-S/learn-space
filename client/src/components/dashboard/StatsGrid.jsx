@@ -7,34 +7,65 @@ import {
 
 import StatsCard from "./StatsCard";
 
+import { useCourses } from "@/hooks/courses/useCourses";
+import { usePosts } from "@/hooks/community/usePosts";
+import { useLiveSessions } from "@/hooks/liveSessions/useLiveSessions";
+import { useCurrentUser } from "@/hooks/auth/useCurrentUser";
+
+import { getOverallProgress } from "@/utils/courseProgress";
+
 function StatsGrid() {
+  const { data: coursesData } = useCourses();
+  const { data: postsData } = usePosts();
+  const { data: sessionsData } = useLiveSessions();
+  const { data: currentUser } = useCurrentUser();
+
+  const courses = coursesData?.data || [];
+  const posts = postsData?.data || [];
+  const sessions = sessionsData?.data || [];
+
+  const userId = currentUser?.user?._id;
+
+  const upcomingSessions = sessions.filter(
+    (session) => session.status === "upcoming"
+  ).length;
+
+  const overallProgress = getOverallProgress(
+    userId,
+    courses
+  );
+
+  console.log("Current User:", currentUser);
+console.log("User ID:", userId);
+console.log("Courses:", courses);
+console.log("Overall Progress:", overallProgress);
   return (
     <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
       <StatsCard
         title="Courses"
-        value="12"
+        value={courses.length}
         description="Available courses"
         icon={BookOpen}
       />
 
       <StatsCard
         title="Community Posts"
-        value="48"
+        value={posts.length}
         description="Latest discussions"
         icon={Users}
       />
 
       <StatsCard
         title="Live Sessions"
-        value="6"
-        description="Scheduled this week"
+        value={sessions.length}
+        description="Available sessions"
         icon={Video}
       />
 
       <StatsCard
         title="Learning Progress"
-        value="78%"
-        description="Completed"
+        value={`${overallProgress}%`}
+        description="Overall learning progress"
         icon={Trophy}
       />
     </section>
@@ -42,3 +73,4 @@ function StatsGrid() {
 }
 
 export default StatsGrid;
+

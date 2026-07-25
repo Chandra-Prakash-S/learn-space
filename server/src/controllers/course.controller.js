@@ -5,7 +5,7 @@ const getCourses = async (req, res) => {
   try {
     const courses = await Course.find()
       .select(
-        "title description instructor thumbnail category level duration"
+        "title description instructor thumbnail category level duration lessons"
       )
       .sort({ createdAt: -1 })
       .lean();
