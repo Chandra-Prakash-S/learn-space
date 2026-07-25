@@ -40,6 +40,22 @@ export function toggleLessonCompletion(
   return progress[courseId];
 }
 
+export function getOverallProgress(userId, courses = []) {
+  if (!userId || courses.length === 0) return 0;
+
+  let total = 0;
+
+  courses.forEach((course) => {
+    total += getProgressPercentage(
+      userId,
+      course._id,
+      course.lessons?.length || 0
+    );
+  });
+
+  return Math.round(total / courses.length);
+}
+
 export function getProgressPercentage(
   userId,
   courseId,
