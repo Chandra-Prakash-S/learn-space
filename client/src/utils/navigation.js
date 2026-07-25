@@ -2,7 +2,7 @@ import {
   LayoutDashboard,
   Users,
   BookOpen,
-  Video,
+  Presentation,
 } from "lucide-react";
 
 export const navigation = [
@@ -24,6 +24,6 @@ export const navigation = [
   {
     label: "Live Sessions",
     path: "/live-sessions",
-    icon: Video,
+    icon: Presentation,
   },
 ];
