@@ -1,43 +1,81 @@
-import { CheckCircle2, PlayCircle } from "lucide-react";
+import {
+  CheckCircle2,
+  Circle,
+  PlayCircle,
+} from "lucide-react";
 
 function LessonItem({
   lesson,
   isSelected,
+  isCompleted,
+  onToggleComplete,
   onSelect,
 }) {
+  const handleSelect = () => onSelect(lesson);
+
   return (
-    <button
-      onClick={() => onSelect(lesson)}
-      className={`flex w-full cursor-pointer items-center justify-between rounded-lg border p-4 text-left transition-all duration-300 ${
+    <div
+      role="button"
+      tabIndex={0}
+      onClick={handleSelect}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          handleSelect();
+        }
+      }}
+      className={`group cursor-pointer rounded-lg border p-4 transition-all duration-300 ${
         isSelected
           ? "border-indigo-500 bg-indigo-500/10 shadow-lg shadow-indigo-500/10"
           : "border-slate-800 bg-slate-900 hover:-translate-y-0.5 hover:border-slate-700"
       }`}
     >
-      <div className="flex items-center gap-4">
-        {isSelected ? (
-          <CheckCircle2 className="h-6 w-6 text-indigo-400" />
-        ) : (
-          <PlayCircle className="h-6 w-6 text-slate-400" />
-        )}
+      <div className="flex items-center justify-between gap-4">
+        <div className="flex flex-1 items-center gap-4">
+          {isCompleted ? (
+            <CheckCircle2 className="h-6 w-6 shrink-0 text-emerald-400" />
+          ) : (
+            <PlayCircle className="h-6 w-6 shrink-0 text-slate-400 transition-colors group-hover:text-indigo-400" />
+          )}
 
-        <div>
-          <p
-            className={`font-medium transition-colors ${
-              isSelected
-                ? "text-indigo-400"
-                : "text-white"
-            }`}
-          >
-            {lesson.title}
-          </p>
+          <div className="flex-1">
+            <h3
+              className={`font-medium transition-colors ${
+                isSelected
+                  ? "text-indigo-400"
+                  : "text-white"
+              }`}
+            >
+              {lesson.title}
+            </h3>
 
-          <p className="mt-1 text-sm text-slate-400">
-            {lesson.duration}
-          </p>
+            <p className="mt-1 text-sm text-slate-400">
+              {lesson.duration}
+            </p>
+          </div>
+        </div>
+
+        {/* Fixed-width action column */}
+        <div className="flex w-32 justify-end">
+          {isCompleted ? (
+            <span className="inline-flex w-full items-center justify-center rounded-full border border-emerald-500/30 bg-emerald-500/15 px-3 py-2 text-xs font-medium text-emerald-400 shadow-sm">
+              ✓ Completed
+            </span>
+          ) : (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onToggleComplete(lesson.title);
+              }}
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-700 px-3 py-2 text-xs font-medium text-slate-300 transition-all duration-300 hover:border-indigo-500 hover:bg-indigo-500/10 hover:text-white"
+            >
+              <Circle className="h-3 w-3" />
+              Mark Complete
+            </button>
+          )}
         </div>
       </div>
-    </button>
+    </div>
   );
 }
 
