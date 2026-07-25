@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import {
   Card,
   CardContent,
@@ -9,25 +11,15 @@ import { Video } from "lucide-react";
 
 import DashboardListItem from "./DashboardListItem";
 
-const sessions = [
-  {
-    id: 1,
-    title: "React Hooks Deep Dive",
-    time: "Today • 6:00 PM",
-  },
-  {
-    id: 2,
-    title: "JWT Authentication",
-    time: "Tomorrow • 5:00 PM",
-  },
-  {
-    id: 3,
-    title: "MongoDB Q&A",
-    time: "Friday • 7:00 PM",
-  },
-];
+import { useUpcomingLiveSessions } from "@/hooks/liveSessions/useUpcomingLiveSessions";
 
 function UpcomingSessions() {
+  const navigate = useNavigate();
+
+  const { data, isLoading } = useUpcomingLiveSessions();
+
+  const sessions = data?.data || [];
+
   return (
     <Card className="border-slate-800 bg-slate-900">
       <CardHeader>
@@ -38,15 +30,33 @@ function UpcomingSessions() {
       </CardHeader>
 
       <CardContent className="space-y-4">
-        {sessions.map((session) => (
-          <DashboardListItem
-            key={session.id}
-            title={session.title}
-            subtitle={session.time}
-            buttonText="Join"
-            buttonClassName="bg-green-600 hover:bg-green-500 text-white"
-          />
-        ))}
+        {isLoading ? (
+          <p className="text-sm text-slate-400">
+            Loading sessions...
+          </p>
+        ) : sessions.length === 0 ? (
+          <p className="text-sm text-slate-400">
+            No upcoming sessions.
+          </p>
+        ) : (
+          sessions.map((session) => (
+            <DashboardListItem
+              key={session._id}
+              title={session.title}
+              subtitle={`${session.instructor} • ${new Date(
+                session.scheduledAt
+              ).toLocaleString("en-IN", {
+                dateStyle: "medium",
+                timeStyle: "short",
+              })}`}
+              buttonText="Join"
+              buttonClassName="bg-green-600 text-white hover:bg-green-500"
+              onButtonClick={() =>
+                navigate(`/live-sessions/${session._id}`)
+              }
+            />
+          ))
+        )}
       </CardContent>
     </Card>
   );

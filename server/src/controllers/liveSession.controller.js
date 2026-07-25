@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 import LiveSession from "../models/LiveSession.js";
 
+// Get all live sessions
 const getLiveSessions = async (req, res) => {
   try {
-    // Fetch all live sessions (summary view)
     const liveSessions = await LiveSession.find()
       .select(
         [
@@ -25,6 +25,42 @@ const getLiveSessions = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching live sessions:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
+};
+
+// Get only upcoming live sessions (Dashboard)
+const getUpcomingLiveSessions = async (req, res) => {
+  try {
+    const liveSessions = await LiveSession.find({
+      status: "upcoming",
+      scheduledAt: { $gt: new Date() },
+    })
+      .select(
+        [
+          "title",
+          "description",
+          "instructor",
+          "scheduledAt",
+          "duration",
+          "status",
+        ].join(" ")
+      )
+      .sort({ scheduledAt: 1 })
+      .limit(3)
+      .lean();
+
+    return res.status(200).json({
+      success: true,
+      count: liveSessions.length,
+      data: liveSessions,
+    });
+  } catch (error) {
+    console.error("Error fetching upcoming live sessions:", error);
 
     return res.status(500).json({
       success: false,
@@ -69,4 +105,8 @@ const getLiveSessionById = async (req, res) => {
   }
 };
 
-export { getLiveSessions, getLiveSessionById };
+export {
+  getLiveSessions,
+  getUpcomingLiveSessions,
+  getLiveSessionById,
+};

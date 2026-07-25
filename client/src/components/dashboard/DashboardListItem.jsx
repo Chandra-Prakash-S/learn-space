@@ -5,6 +5,7 @@ function DashboardListItem({
   subtitle,
   buttonText,
   buttonClassName = "",
+  onButtonClick,
 }) {
   return (
     <div className="flex items-center justify-between rounded-lg border border-slate-800 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-indigo-500 hover:bg-slate-800/40">
@@ -13,7 +14,11 @@ function DashboardListItem({
         <p className="text-sm text-slate-400">{subtitle}</p>
       </div>
 
-      <Button size="default" className={buttonClassName}>
+      <Button
+        size="default"
+        className={buttonClassName}
+        onClick={onButtonClick}
+      >
         {buttonText}
       </Button>
     </div>
