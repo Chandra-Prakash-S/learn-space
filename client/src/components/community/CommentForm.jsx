@@ -47,11 +47,8 @@ function CommentForm({ postId }) {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="mt-5 space-y-2"
-    >
-      <div className="flex gap-3">
+    <form onSubmit={handleSubmit(onSubmit)} className="mt-5">
+      <div className="flex items-center gap-4">
         <Input
           className="flex-1"
           placeholder="Write a comment..."
@@ -61,21 +58,19 @@ function CommentForm({ postId }) {
         <Button
           type="submit"
           disabled={commentMutation.isPending}
-          className="min-w-24"
+          className="h-9 min-w-32 bg-indigo-600 hover:bg-indigo-500"
         >
-          {commentMutation.isPending
-            ? "Posting..."
-            : "Post"}
+          {commentMutation.isPending ? "Posting..." : "Post"}
         </Button>
       </div>
 
       {errors.text && (
-        <p className="text-sm text-red-400">
+        <p className="mt-2 text-sm text-red-400">
           {errors.text.message}
         </p>
       )}
 
-      <p className="text-xs text-slate-500">
+      <p className="mt-2 text-xs text-slate-500">
         {text.length}/500
       </p>
     </form>

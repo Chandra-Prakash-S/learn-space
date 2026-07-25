@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import {
   Card,
   CardContent,
@@ -9,25 +11,15 @@ import { BookOpen } from "lucide-react";
 
 import DashboardListItem from "./DashboardListItem";
 
-const recentCourses = [
-  {
-    id: 1,
-    title: "React Fundamentals",
-    instructor: "John Doe",
-  },
-  {
-    id: 2,
-    title: "Node.js Essentials",
-    instructor: "Jane Smith",
-  },
-  {
-    id: 3,
-    title: "MongoDB Basics",
-    instructor: "Alex Johnson",
-  },
-];
+import { useCourses } from "@/hooks/courses/useCourses";
 
 function RecentCourses() {
+  const navigate = useNavigate();
+
+  const { data, isLoading } = useCourses();
+
+  const courses = data?.data?.slice(0, 3) || [];
+
   return (
     <Card className="border-slate-800 bg-slate-900">
       <CardHeader>
@@ -38,15 +30,28 @@ function RecentCourses() {
       </CardHeader>
 
       <CardContent className="space-y-4">
-        {recentCourses.map((course) => (
-          <DashboardListItem
-            key={course.id}
-            title={course.title}
-            subtitle={course.instructor}
-            buttonText="View"
-            buttonClassName="border border-slate-700 bg-slate-800/60 text-slate-200 hover:border-indigo-500/40 hover:bg-indigo-500/10 hover:text-indigo-300"
-          />
-        ))}
+        {isLoading ? (
+          <p className="text-sm text-slate-400">
+            Loading courses...
+          </p>
+        ) : courses.length === 0 ? (
+          <p className="text-sm text-slate-400">
+            No courses available.
+          </p>
+        ) : (
+          courses.map((course) => (
+            <DashboardListItem
+              key={course._id}
+              title={course.title}
+              subtitle={course.instructor}
+              buttonText="View"
+              buttonClassName="border border-slate-700 bg-slate-800/60 text-slate-200 hover:border-indigo-500/40 hover:bg-indigo-500/10 hover:text-indigo-300"
+              onButtonClick={() =>
+                navigate(`/courses/${course._id}`)
+              }
+            />
+          ))
+        )}
       </CardContent>
     </Card>
   );
