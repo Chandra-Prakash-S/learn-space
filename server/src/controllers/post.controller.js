@@ -65,9 +65,17 @@ const createPost = async (req, res) => {
   try {
     const { content, image } = req.body;
 
+    // Validate post content
+    if (!content?.trim()) {
+      return res.status(400).json({
+        success: false,
+        message: "Post content is required",
+      });
+    }
+
     const post = await Post.create({
       author: req.user._id,
-      content,
+      content: content.trim(),
       image,
     });
 
@@ -159,6 +167,14 @@ const addComment = async (req, res) => {
       });
     }
 
+    // Validate comment text
+    if (!text?.trim()) {
+      return res.status(400).json({
+        success: false,
+        message: "Comment cannot be empty",
+      });
+    }
+
     const post = await Post.findById(id);
 
     if (!post) {
@@ -170,7 +186,7 @@ const addComment = async (req, res) => {
 
     post.comments.push({
       user: req.user._id,
-      text,
+      text: text.trim(),
     });
 
     await post.save();
