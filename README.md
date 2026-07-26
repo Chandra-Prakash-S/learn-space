@@ -293,11 +293,6 @@ GET /api/live-sessions/upcoming
 
 ## 📸 Screenshots
 
-
-## 📸 Screenshots
-
-## 📸 Screenshots
-
 ### 🔐 Login
 ![](./screenshots/login.png)
 
