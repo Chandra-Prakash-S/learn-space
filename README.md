@@ -25,9 +25,16 @@
 
 ## 📖 Overview
 
-LearnSpace is a modern Learning Management System (LMS) designed to provide an engaging online learning experience. Users can browse courses, watch recorded video lessons, interact with the community, and join upcoming live sessions.
+LearnSpace is a modern full-stack Learning Management System (LMS) built with the MERN stack. The platform enables users to browse courses, watch recorded video lessons, engage in community discussions, and join upcoming live learning sessions.
 
 This project was developed as part of a Full Stack Developer interview assignment, emphasizing clean architecture, reusable components, responsive UI, and scalable backend design.
+
+---
+
+## 🌐 Live Demo
+
+- 🚀 **Frontend:** https://learn-space-psi.vercel.app
+- 🔗 **Backend API:** https://learn-space.onrender.com
 
 ---
 
