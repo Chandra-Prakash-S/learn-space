@@ -293,17 +293,48 @@ GET /api/live-sessions/upcoming
 
 ## 📸 Screenshots
 
-> Add screenshots here before submission.
 
-Example:
+## 📸 Screenshots
 
-```
-screenshots/
-    dashboard.png
-    courses.png
-    community.png
-    live-sessions.png
-```
+## 📸 Screenshots
+
+### 🔐 Login
+![](./screenshots/login.png)
+
+---
+
+### 🚀 Register
+![](./screenshots/register.png)
+
+---
+
+### 📊 Dashboard
+![](./screenshots/dashboard.png)
+
+---
+
+### 👥 Community Feed
+![](./screenshots/community.png)
+
+---
+
+### 📚 Course Library
+![](./screenshots/courses.png)
+
+---
+
+### 🎥 Course Details
+![](./screenshots/course-details.png)
+
+---
+
+### 📅 Live Session Page
+![](./screenshots/live-session-page.png)
+
+---
+
+### 📅 Live Session Details
+![](./screenshots/live-session.png)
 
 ---
 
