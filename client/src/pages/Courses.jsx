@@ -1,14 +1,21 @@
 import { useMemo, useState } from "react";
-import { BookOpen, Search } from "lucide-react";
+import { Link } from "react-router-dom";
+import { BookOpen, Search, Plus } from "lucide-react";
 
 import CourseGrid from "@/components/courses/CourseGrid";
 import CourseSkeleton from "@/components/courses/CourseSkeleton";
 import EmptyCourses from "@/components/courses/EmptyCourses";
 
+import { Button } from "@/components/ui/button";
+
+import { useCurrentUser } from "@/hooks/auth/useCurrentUser";
 import { useCourses } from "@/hooks/courses/useCourses";
 
 function Courses() {
   const { data, isLoading } = useCourses();
+  const { data: currentUserData } = useCurrentUser();
+
+  const isAdmin = currentUserData?.user?.role === "admin";
 
   const [searchTerm, setSearchTerm] = useState("");
   const [category, setCategory] = useState("All");
@@ -38,36 +45,62 @@ function Courses() {
       const matchesLevel =
         level === "All" || course.level === level;
 
-      return matchesSearch && matchesCategory && matchesLevel;
+      return (
+        matchesSearch &&
+        matchesCategory &&
+        matchesLevel
+      );
     });
   }, [courses, searchTerm, category, level]);
 
-  // ✅ Hooks are finished before any conditional return
   if (isLoading) {
     return <CourseSkeleton />;
   }
 
   return (
     <div className="space-y-8">
-      <div className="space-y-3">
-        <div className="flex items-center gap-3">
-          <BookOpen className="h-6 w-6 shrink-0 text-indigo-400 sm:h-7 sm:w-7" />
+      {/* Header */}
+      <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
+        <div className="space-y-3">
+          <div className="flex items-center gap-3">
+            <BookOpen className="h-6 w-6 shrink-0 text-indigo-400 sm:h-7 sm:w-7" />
 
-          <h1 className="text-2xl font-bold text-white sm:text-3xl">
-            Course Library
-          </h1>
-        </div>
+            <div>
+              <h1 className="text-2xl font-bold text-white sm:text-3xl">
+                Course Library
+              </h1>
 
-        <p className="text-slate-400">
-          Browse and continue your learning journey.
-        </p>
+              {isAdmin && (
+                <p className="mt-1 text-sm font-medium text-amber-400">
+                  👑 Administrator Mode
+                </p>
+              )}
+            </div>
+          </div>
 
-        <div>
+          <p className="text-slate-400">
+            Browse and continue your learning journey.
+          </p>
+
           <span className="inline-flex rounded-full border border-slate-700 bg-slate-900 px-3 py-1 text-sm text-slate-300">
             {courses.length}{" "}
-            {courses.length === 1 ? "Course" : "Courses"} Available
+            {courses.length === 1
+              ? "Course"
+              : "Courses"}{" "}
+            Available
           </span>
         </div>
+
+        {isAdmin && (
+          <Link to="/courses/new">
+            <Button
+              className="bg-indigo-600 hover:bg-indigo-500"
+            >
+              <Plus className="mr-2 h-4 w-4" />
+              Create Course
+            </Button>
+          </Link>
+        )}
       </div>
 
       {/* Search & Filters */}
@@ -80,7 +113,9 @@ function Courses() {
             type="text"
             placeholder="Search courses..."
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={(e) =>
+              setSearchTerm(e.target.value)
+            }
             className="w-full min-w-0 rounded-lg border border-slate-700 bg-slate-900 px-3 py-2.5 pl-10 pr-3 text-white outline-none transition focus:border-indigo-500"
           />
         </div>
@@ -88,7 +123,9 @@ function Courses() {
         {/* Category Filter */}
         <select
           value={category}
-          onChange={(e) => setCategory(e.target.value)}
+          onChange={(e) =>
+            setCategory(e.target.value)
+          }
           className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-white outline-none transition focus:border-indigo-500"
         >
           <option value="All">All Categories</option>
@@ -96,7 +133,10 @@ function Courses() {
           {categories
             .filter((item) => item !== "All")
             .map((item) => (
-              <option key={item} value={item}>
+              <option
+                key={item}
+                value={item}
+              >
                 {item}
               </option>
             ))}
@@ -105,7 +145,9 @@ function Courses() {
         {/* Level Filter */}
         <select
           value={level}
-          onChange={(e) => setLevel(e.target.value)}
+          onChange={(e) =>
+            setLevel(e.target.value)
+          }
           className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-white outline-none transition focus:border-indigo-500"
         >
           <option value="All">All Levels</option>
@@ -113,12 +155,15 @@ function Courses() {
           {levels
             .filter((item) => item !== "All")
             .map((item) => (
-              <option key={item} value={item}>
+              <option
+                key={item}
+                value={item}
+              >
                 {item}
               </option>
             ))}
         </select>
-            
+
         {/* Clear */}
         <button
           onClick={() => {
@@ -143,7 +188,8 @@ function Courses() {
           </h3>
 
           <p className="mt-2 text-slate-400">
-            Try changing your search or filter criteria.
+            Try changing your search or filter
+            criteria.
           </p>
         </div>
       ) : (

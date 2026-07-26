@@ -5,20 +5,16 @@ import QuickActions from "@/components/dashboard/QuickActions";
 
 function Dashboard() {
   return (
-    <div className="space-y-8 md:space-y-10">
-      <section>
-        <StatsGrid />
-      </section>
+    <div className="space-y-6">
+  <StatsGrid />
 
-      <section className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        <RecentCourses />
-        <UpcomingSessions />
-      </section>
+  <section className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+    <RecentCourses />
+    <UpcomingSessions />
+  </section>
 
-      <section>
-        <QuickActions />
-      </section>
-    </div>
+  <QuickActions />
+</div>
   );
 }
 

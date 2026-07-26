@@ -4,17 +4,49 @@ import {
   getLiveSessions,
   getUpcomingLiveSessions,
   getLiveSessionById,
+  createLiveSession,
+  updateLiveSession,
+  deleteLiveSession,
 } from "../controllers/liveSession.controller.js";
+
+import { protect } from "../middleware/auth.middleware.js";
+import { authorize } from "../middleware/authorize.js";
 
 const router = express.Router();
 
-// Dashboard - Upcoming sessions only
-router.get("/upcoming", getUpcomingLiveSessions);
+// Dashboard
+router.get(
+  "/upcoming",
+  protect,
+  getUpcomingLiveSessions
+);
 
 // All live sessions
-router.get("/", getLiveSessions);
+router.get("/", protect, getLiveSessions);
 
-// Live session details
-router.get("/:id", getLiveSessionById);
+// Details
+router.get("/:id", protect, getLiveSessionById);
+
+// Admin only
+router.post(
+  "/",
+  protect,
+  authorize("admin"),
+  createLiveSession
+);
+
+router.put(
+  "/:id",
+  protect,
+  authorize("admin"),
+  updateLiveSession
+);
+
+router.delete(
+  "/:id",
+  protect,
+  authorize("admin"),
+  deleteLiveSession
+);
 
 export default router;

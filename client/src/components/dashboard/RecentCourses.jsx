@@ -22,14 +22,14 @@ function RecentCourses() {
 
   return (
     <Card className="border-slate-800 bg-slate-900">
-      <CardHeader className="pb-4">
+      <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2 text-lg text-white sm:text-xl">
           <BookOpen className="h-5 w-5 shrink-0 text-indigo-400" />
           <span className="truncate">Recent Courses</span>
         </CardTitle>
       </CardHeader>
 
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-3 pt-0">
         {isLoading ? (
           <p className="text-sm text-slate-400">
             Loading courses...

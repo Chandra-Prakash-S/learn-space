@@ -1,15 +1,25 @@
 import { useEffect, useState } from "react";
-import { ArrowLeft } from "lucide-react";
-import { Link, useParams } from "react-router-dom";
+import {
+  ArrowLeft,
+  Pencil,
+  Trash2,
+} from "lucide-react";
+import {
+  Link,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import { toast } from "sonner";
 
 import CourseDetailsCard from "@/components/courses/CourseDetailsCard";
 import LessonList from "@/components/courses/LessonList";
 import VideoPlayer from "@/components/courses/VideoPlayer";
 import CourseSkeleton from "@/components/courses/CourseSkeleton";
+import { Button } from "@/components/ui/button";
 
 import { useCourse } from "@/hooks/courses/useCourse";
 import { useCurrentUser } from "@/hooks/auth/useCurrentUser";
+import { useDeleteCourse } from "@/hooks/courses/useDeleteCourse";
 
 import {
   getCompletedLessons,
@@ -19,25 +29,23 @@ import {
 
 function CourseDetails() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const { data, isLoading, isError } = useCourse(id);
   const { data: currentUser } = useCurrentUser();
 
+  const { mutate: deleteCourse } = useDeleteCourse();
+
   const course = data?.data;
 
   const userId = currentUser?.user?._id;
+  const isAdmin = currentUser?.user?.role === "admin";
 
-  const [selectedLesson, setSelectedLesson] =
-    useState(null);
-
-  const [completedLessons, setCompletedLessons] =
-    useState([]);
+  const [selectedLesson, setSelectedLesson] = useState(null);
+  const [completedLessons, setCompletedLessons] = useState([]);
 
   useEffect(() => {
-    if (
-      course?.lessons?.length &&
-      userId
-    ) {
+    if (course?.lessons?.length && userId) {
       setSelectedLesson(course.lessons[0]);
 
       setCompletedLessons(
@@ -67,6 +75,27 @@ function CourseDetails() {
     }
   }
 
+  function handleDelete() {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this course?"
+    );
+
+    if (!confirmed) return;
+
+    deleteCourse(course._id, {
+      onSuccess: () => {
+        toast.success("Course deleted successfully.");
+        navigate("/courses");
+      },
+      onError: (error) => {
+        toast.error(
+          error?.response?.data?.message ||
+            "Failed to delete course."
+        );
+      },
+    });
+  }
+
   const progress =
     course && userId
       ? getProgressPercentage(
@@ -90,15 +119,21 @@ function CourseDetails() {
 
   return (
     <div className="space-y-8">
-      <Link
-        to="/courses"
-        className="inline-flex items-center gap-2 text-sm text-slate-400 transition-colors hover:text-white"
-      >
-        <ArrowLeft className="h-4 w-4" />
-        Back to Course Library
-      </Link>
+      <div className="flex flex-wrap items-center justify-between gap-4">
+          <Link
+            to="/courses"
+            className="inline-flex items-center gap-2 text-sm font-medium text-slate-400 transition-colors hover:text-white"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Back to Course Library
+          </Link>
+      </div>
 
-      <CourseDetailsCard course={course} />
+      <CourseDetailsCard
+        course={course}
+        isAdmin={isAdmin}
+        onDelete={handleDelete}
+      />
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         <div className="space-y-4 lg:col-span-2">
@@ -115,7 +150,7 @@ function CourseDetails() {
 
           <div className="rounded-xl border border-slate-800 bg-slate-900 p-5">
             <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-              <h3 className="text-base sm:text-lg font-semibold text-white">
+              <h3 className="text-base font-semibold text-white sm:text-lg">
                 Learning Progress
               </h3>
 
@@ -146,8 +181,7 @@ function CourseDetails() {
 
               <span className="text-slate-400">
                 {" "}
-                of{" "}
-                {course.lessons.length} lessons
+                of {course.lessons.length} lessons
                 completed
               </span>
             </p>
@@ -160,15 +194,9 @@ function CourseDetails() {
           <LessonList
             lessons={course.lessons}
             selectedLesson={selectedLesson}
-            onSelectLesson={
-              setSelectedLesson
-            }
-            completedLessons={
-              completedLessons
-            }
-            onToggleComplete={
-              handleToggleLesson
-            }
+            onSelectLesson={setSelectedLesson}
+            completedLessons={completedLessons}
+            onToggleComplete={handleToggleLesson}
           />
         </div>
       </div>

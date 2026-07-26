@@ -1,8 +1,18 @@
-import { Clock } from "lucide-react";
+import {
+  Clock,
+  Pencil,
+  Trash2,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 
-function CourseDetailsCard({ course }) {
+function CourseDetailsCard({
+  course,
+  isAdmin = false,
+  onDelete,
+}) {
   const BACKEND_URL =
     import.meta.env.VITE_API_URL.replace("/api", "");
 
@@ -21,7 +31,7 @@ function CourseDetailsCard({ course }) {
 
   return (
     <div className="overflow-hidden rounded-xl border border-slate-800 bg-slate-900">
-      <div className="aspect-video md:aspect-[16/6] overflow-hidden border-b border-slate-800 bg-slate-950">
+      <div className="aspect-video overflow-hidden border-b border-slate-800 bg-slate-950 md:aspect-[16/6]">
         <img
           src={
             course.thumbnail
@@ -49,7 +59,7 @@ function CourseDetailsCard({ course }) {
         </div>
 
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-white">
+          <h1 className="text-2xl font-bold text-white sm:text-3xl">
             {course.title}
           </h1>
 
@@ -60,34 +70,58 @@ function CourseDetailsCard({ course }) {
 
         <hr className="border-slate-800" />
 
-        <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-sm text-slate-400">
-          <div className="flex items-center gap-3">
-            <Avatar className="h-9 w-9">
-              <AvatarFallback>
-                {initials}
-              </AvatarFallback>
-            </Avatar>
+        <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-wrap items-center gap-4 text-sm text-slate-400 sm:gap-6">
+            <div className="flex items-center gap-3">
+              <Avatar className="h-9 w-9">
+                <AvatarFallback>
+                  {initials}
+                </AvatarFallback>
+              </Avatar>
 
-            <div>
-              <p className="font-medium text-white">
-                {course.instructor}
-              </p>
+              <div>
+                <p className="font-medium text-white">
+                  {course.instructor}
+                </p>
 
-              <p className="text-xs text-slate-500">
-                Instructor
-              </p>
+                <p className="text-xs text-slate-500">
+                  Instructor
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <Clock className="h-4 w-4 text-indigo-400" />
+
+              <span>
+                {course.duration
+                  .replace("Hours", "hrs")
+                  .replace("Hour", "hr")}
+              </span>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
-            <Clock className="h-4 w-4 text-indigo-400" />
+          {isAdmin && (
+            <div className="flex items-center gap-2">
+              <Link to={`/courses/${course._id}/edit`}>
+                <Button
+                  variant="outline"
+                  className="border-slate-700 bg-slate-900 text-white hover:bg-slate-800"
+                >
+                  <Pencil className="mr-2 h-4 w-4" />
+                  Edit
+                </Button>
+              </Link>
 
-            <span>
-              {course.duration
-                .replace("Hours", "hrs")
-                .replace("Hour", "hr")}
-            </span>
-          </div>
+              <Button
+                variant="destructive"
+                onClick={onDelete}
+              >
+                <Trash2 className="mr-2 h-4 w-4" />
+                Delete
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </div>
