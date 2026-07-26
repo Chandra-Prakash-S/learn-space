@@ -192,7 +192,8 @@ LearnSpace
 ### Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/learnspace.git
+git clone https://github.com/Chandra-Prakash-S/learn-space
+
 ```
 
 ```
