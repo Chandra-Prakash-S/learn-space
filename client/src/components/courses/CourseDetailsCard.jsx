@@ -3,6 +3,9 @@ import { Clock } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 function CourseDetailsCard({ course }) {
+  const BACKEND_URL =
+    import.meta.env.VITE_API_URL.replace("/api", "");
+
   const levelClasses = {
     Beginner: "bg-emerald-500/20 text-emerald-400",
     Intermediate: "bg-yellow-500/20 text-yellow-400",
@@ -18,14 +21,17 @@ function CourseDetailsCard({ course }) {
 
   return (
     <div className="overflow-hidden rounded-xl border border-slate-800 bg-slate-900">
-      <img
-        src={
-          course.thumbnail ||
-          "https://placehold.co/1200x500?text=Course"
-        }
-        alt={course.title}
-        className="h-72 w-full object-cover"
-      />
+      <div className="aspect-[16/6] overflow-hidden border-b border-slate-800 bg-slate-950">
+        <img
+          src={
+            course.thumbnail
+              ? `${BACKEND_URL}${course.thumbnail}`
+              : "https://placehold.co/1200x675?text=Course"
+          }
+          alt={course.title}
+          className="h-full w-full object-contain"
+        />
+      </div>
 
       <div className="space-y-6 p-6">
         <div className="flex flex-wrap items-center gap-2">
@@ -47,7 +53,7 @@ function CourseDetailsCard({ course }) {
             {course.title}
           </h1>
 
-          <p className="mt-3 text-slate-400 leading-7">
+          <p className="mt-3 leading-7 text-slate-400">
             {course.description}
           </p>
         </div>

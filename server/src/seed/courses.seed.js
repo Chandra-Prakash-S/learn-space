@@ -5,34 +5,34 @@ const courses = [
       "Learn React from scratch by building modern and reusable user interfaces.",
     instructor: "John Doe",
     thumbnail:
-      "https://images.unsplash.com/photo-1633356122544-f134324a6cee",
+      "/uploads/courses/react-fundamentals.png",
     category: "Frontend",
     level: "Beginner",
     duration: "8 Hours",
     lessons: [
       {
         title: "Introduction to React",
-        videoUrl: "https://example.com/react-intro",
+        videoUrl: "https://www.youtube.com/embed/QFaFIcGhPoM?si=24URJ6zOP0vfKRrv",
         duration: "15 min",
       },
       {
         title: "JSX Basics",
-        videoUrl: "https://example.com/react-jsx",
+        videoUrl: "https://www.youtube.com/embed/7fPXI_MnBOY?si=oisJafSOHWnj2kfd",
         duration: "20 min",
       },
       {
         title: "Components & Props",
-        videoUrl: "https://example.com/react-components",
+        videoUrl: "https://www.youtube.com/embed/Y2hgEGPzTZY?si=uOAyfAZnMHjQuHnp",
         duration: "28 min",
       },
       {
         title: "State & Events",
-        videoUrl: "https://example.com/react-state",
+        videoUrl: "https://www.youtube.com/embed/4ORZ1GmjaMc?si=FeOVVfBaqvAeoISh",
         duration: "30 min",
       },
       {
         title: "Project Setup",
-        videoUrl: "https://example.com/react-project",
+        videoUrl: "https://www.youtube.com/embed/VZ6Qpe3sjhM?si=u8V-3ostkZDLfOZA",
         duration: "25 min",
       },
     ],
@@ -44,29 +44,29 @@ const courses = [
       "Build scalable REST APIs using Node.js, Express and MongoDB.",
     instructor: "Sarah Wilson",
     thumbnail:
-      "https://images.unsplash.com/photo-1555949963-aa79dcee981c",
+      "/uploads/courses/node-express-api.png",
     category: "Backend",
     level: "Intermediate",
     duration: "10 Hours",
     lessons: [
       {
         title: "Node.js Basics",
-        videoUrl: "https://example.com/node-intro",
+        videoUrl: "https://www.youtube.com/embed/ENrzD9HAZK4?si=Np4maBzlhGN7XXaw",
         duration: "18 min",
       },
       {
         title: "Express Fundamentals",
-        videoUrl: "https://example.com/express",
+        videoUrl: "https://www.youtube.com/embed/SccSCuHhOw0?si=0sq9T4f4CvfO3KxG",
         duration: "25 min",
       },
       {
         title: "REST APIs",
-        videoUrl: "https://example.com/rest",
+        videoUrl: "https://www.youtube.com/embed/lsMQRaeKNDk?si=c01OyFqb2yKTIOFb",
         duration: "35 min",
       },
       {
         title: "Authentication",
-        videoUrl: "https://example.com/auth",
+        videoUrl: "https://www.youtube.com/embed/xJA8tP74KD0?si=iYWsKbuPy-6bvpLk",
         duration: "32 min",
       },
     ],
@@ -78,29 +78,29 @@ const courses = [
       "Understand NoSQL databases and design efficient MongoDB schemas.",
     instructor: "David Lee",
     thumbnail:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3",
+      "/uploads/courses/mongodb-essentials.png",
     category: "Database",
     level: "Beginner",
     duration: "6 Hours",
     lessons: [
       {
         title: "Introduction to MongoDB",
-        videoUrl: "https://example.com/mongo-intro",
+        videoUrl: "https://www.youtube.com/embed/Puc2EjkdycU?si=xhkEJgOf3BRKfQML",
         duration: "16 min",
       },
       {
         title: "Collections & Documents",
-        videoUrl: "https://example.com/collections",
+        videoUrl: "https://www.youtube.com/embed/1Ibys9sWJS8?si=Cyo_uwOfJ7xTY7UR",
         duration: "20 min",
       },
       {
         title: "CRUD Operations",
-        videoUrl: "https://example.com/crud",
+        videoUrl: "https://www.youtube.com/embed/l0QWVHwD5rU?si=XnG7czXjD7sYs1pD",
         duration: "30 min",
       },
       {
         title: "Aggregation Pipeline",
-        videoUrl: "https://example.com/aggregation",
+        videoUrl: "https://www.youtube.com/embed/-ijw7mzJLVE?si=7y_RAvNTkWltf39I",
         duration: "35 min",
       },
     ],
@@ -112,29 +112,29 @@ const courses = [
       "Master modern JavaScript concepts required for frontend and backend development.",
     instructor: "Michael Brown",
     thumbnail:
-      "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+      "/uploads/courses/javascript-mastery.png",
     category: "Programming",
     level: "Intermediate",
     duration: "12 Hours",
     lessons: [
       {
         title: "ES6 Features",
-        videoUrl: "https://example.com/es6",
+        videoUrl: "https://www.youtube.com/embed/NCwa_xi0Uuc?si=cpoCQF8lvOonZ03A",
         duration: "24 min",
       },
       {
         title: "Closures",
-        videoUrl: "https://example.com/closures",
+        videoUrl: "https://www.youtube.com/embed/qikxEIxsXco?si=AzlMZ8vF6_h1U_4m",
         duration: "26 min",
       },
       {
         title: "Promises",
-        videoUrl: "https://example.com/promises",
+        videoUrl: "https://www.youtube.com/embed/DHvZLI7Db8E?si=wGB1meY6LMdeq3l9",
         duration: "28 min",
       },
       {
         title: "Async Await",
-        videoUrl: "https://example.com/async-await",
+        videoUrl: "https://www.youtube.com/embed/9j1dZwFEJ-c?si=pbqTcAtVwEwSeCG0",
         duration: "30 min",
       },
     ],
@@ -146,29 +146,29 @@ const courses = [
       "Containerize applications and simplify deployments using Docker.",
     instructor: "Emma Johnson",
     thumbnail:
-      "https://images.unsplash.com/photo-1605745341112-85968b19335b",
+      "/uploads/courses/docker-for-developers.png",
     category: "DevOps",
     level: "Advanced",
     duration: "9 Hours",
     lessons: [
       {
         title: "Docker Introduction",
-        videoUrl: "https://example.com/docker",
+        videoUrl: "https://www.youtube.com/embed/17Bl31rlnRM?si=dar8YI_7Mh8ikpgu",
         duration: "20 min",
       },
       {
         title: "Docker Images",
-        videoUrl: "https://example.com/images",
+        videoUrl: "https://www.youtube.com/embed/X2hpxp3Kq6A?si=iy9dUDat-A-Py5t_",
         duration: "22 min",
       },
       {
         title: "Docker Compose",
-        videoUrl: "https://example.com/compose",
+        videoUrl: "https://www.youtube.com/embed/HG6yIjZapSA?si=I1Su4p7Zzi1MEUlN",
         duration: "28 min",
       },
       {
         title: "Deploying Containers",
-        videoUrl: "https://example.com/deploy",
+        videoUrl: "https://www.youtube.com/embed/cw34KMPSt4k?si=lTZPuE8VuAtTwZt7",
         duration: "35 min",
       },
     ],
