@@ -40,11 +40,12 @@ This project was developed as part of a Full Stack Developer interview assignmen
 
 ## ✨ Features
 
-### 👤 Authentication
+### 👤 Authentication & Authorization
 
 - Secure JWT Authentication
 - Login & Logout
 - Protected Routes
+- Role-Based Access Control (Admin / Student)
 
 ---
 
@@ -68,6 +69,7 @@ This project was developed as part of a Full Stack Developer interview assignmen
 - Embedded Video Lessons
 - Lesson Progress Tracking
 - Course Completion Progress
+- Admin Course Management (Create, Edit, Delete)
 
 ---
 
@@ -82,6 +84,7 @@ This project was developed as part of a Full Stack Developer interview assignmen
 
 ### 📊 Dashboard
 
+- Personalized Dashboard
 - Learning Statistics
 - Recent Courses
 - Upcoming Sessions
@@ -274,8 +277,11 @@ POST   /api/posts/:id/comments
 ### Courses
 
 ```
-GET /api/courses
-GET /api/courses/:id
+GET    /api/courses
+GET    /api/courses/:id
+POST   /api/courses
+PUT    /api/courses/:id
+DELETE /api/courses/:id
 ```
 
 ### Live Sessions
@@ -290,12 +296,13 @@ GET /api/live-sessions/upcoming
 
 ## 🎨 UI Highlights
 
-- Modern Dashboard
-- Responsive Layout
-- Clean Navigation
+- Modern Responsive Dashboard
+- Mobile-Friendly Navigation
+- Clean Dark Theme UI
 - Embedded YouTube Video Lessons
 - Interactive Community Feed
 - Learning Progress Tracking
+- Admin Course Management Interface
 
 ---
 
@@ -343,7 +350,6 @@ GET /api/live-sessions/upcoming
 
 ## 🔮 Future Improvements
 
-- Role-Based Access Control
 - Course Enrollment
 - Real-time Notifications
 - Live Video Streaming
