@@ -29,7 +29,7 @@ function LessonItem({
           : "border-slate-800 bg-slate-900 hover:-translate-y-0.5 hover:border-slate-700"
       }`}
     >
-      <div className="flex items-center justify-between gap-4">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-1 items-center gap-4">
           {isCompleted ? (
             <CheckCircle2 className="h-6 w-6 shrink-0 text-emerald-400" />
@@ -55,9 +55,9 @@ function LessonItem({
         </div>
 
         {/* Fixed-width action column */}
-        <div className="flex w-32 justify-end">
+        <div className="w-full sm:w-32">
           {isCompleted ? (
-            <span className="inline-flex w-full items-center justify-center rounded-full border border-emerald-500/30 bg-emerald-500/15 px-3 py-2 text-xs font-medium text-emerald-400 shadow-sm">
+            <span className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-700 px-3 py-2 text-xs font-medium text-slate-300 transition-all duration-300 hover:border-indigo-500 hover:bg-indigo-500/10 hover:text-white">
               ✓ Completed
             </span>
           ) : (

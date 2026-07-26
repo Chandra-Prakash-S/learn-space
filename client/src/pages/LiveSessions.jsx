@@ -45,7 +45,7 @@ function LiveSessions() {
   return (
     <div className="space-y-8">
       <div className="flex flex-col gap-2">
-        <h1 className="text-3xl font-bold text-white">
+        <h1 className="text-2xl font-bold text-white sm:text-3xl">
           Upcoming Live Sessions
         </h1>
 
@@ -59,7 +59,7 @@ function LiveSessions() {
       ) : (
         <>
           {/* Search */}
-          <div className="relative max-w-md">
+          <div className="relative w-full max-w-md">
             <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
 
             <input
@@ -67,15 +67,15 @@ function LiveSessions() {
               placeholder="Search live sessions..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full rounded-xl border border-slate-700 bg-slate-900 py-3 pl-11 pr-4 text-white outline-none transition focus:border-indigo-500"
+              className="w-full rounded-xl border border-slate-700 bg-slate-900 px-4 py-3 pl-11 text-white outline-none transition focus:border-indigo-500"
             />
           </div>
 
           {filteredSessions.length === 0 ? (
-            <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-slate-700 bg-slate-900/40 py-16 text-center">
+            <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-slate-700 bg-slate-900/40 px-6 py-12 sm:py-16 text-center">
               <Search className="mb-4 h-12 w-12 text-slate-500" />
 
-              <h3 className="text-xl font-semibold text-white">
+              <h3 className="text-lg font-semibold sm:text-xl font-semibold text-white">
                 No matching sessions
               </h3>
 

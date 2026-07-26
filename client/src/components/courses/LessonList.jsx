@@ -9,7 +9,7 @@ function LessonList({
 }) {
   if (!lessons?.length) {
     return (
-      <div className="rounded-xl border border-slate-800 bg-slate-900 p-6">
+      <div className="rounded-xl border border-slate-800 bg-slate-900 p-4 sm:p-6">
         <h2 className="text-xl font-semibold text-white">
           Course Lessons
         </h2>
@@ -22,10 +22,10 @@ function LessonList({
   }
 
   return (
-    <div className="rounded-xl border border-slate-800 bg-slate-900 p-6">
+    <div className="rounded-xl border border-slate-800 bg-slate-900 p-4 sm:p-6">
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <h2 className="text-xl font-semibold text-white">
+          <h2 className="text-lg font-semibold text-white sm:text-xl">
             Course Lessons ({lessons.length})
           </h2>
 

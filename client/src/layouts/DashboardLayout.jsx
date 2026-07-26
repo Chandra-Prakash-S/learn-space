@@ -5,9 +5,13 @@ import Navbar from "@/components/layout/Navbar";
 function DashboardLayout() {
   return (
     <div className="flex h-screen bg-slate-950 text-white">
-      <Sidebar />
+      {/* Desktop Sidebar */}
+      <div className="hidden md:flex">
+        <Sidebar />
+      </div>
 
-      <div className="flex flex-1 flex-col overflow-hidden">
+      {/* Main Content */}
+      <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
         <Navbar />
 
         <main className="flex-1 overflow-y-auto p-4 md:p-6">

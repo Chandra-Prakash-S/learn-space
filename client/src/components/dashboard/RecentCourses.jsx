@@ -22,10 +22,10 @@ function RecentCourses() {
 
   return (
     <Card className="border-slate-800 bg-slate-900">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-white">
-          <BookOpen className="h-5 w-5 text-indigo-400" />
-          Recent Courses
+      <CardHeader className="pb-4">
+        <CardTitle className="flex items-center gap-2 text-lg text-white sm:text-xl">
+          <BookOpen className="h-5 w-5 shrink-0 text-indigo-400" />
+          <span className="truncate">Recent Courses</span>
         </CardTitle>
       </CardHeader>
 
@@ -45,7 +45,7 @@ function RecentCourses() {
               title={course.title}
               subtitle={course.instructor}
               buttonText="View"
-              buttonClassName="border border-slate-700 bg-slate-800/60 text-slate-200 hover:border-indigo-500/40 hover:bg-indigo-500/10 hover:text-indigo-300"
+              buttonClassName="w-full border border-slate-700 bg-slate-800/60 text-slate-200 hover:border-indigo-500/40 hover:bg-indigo-500/10 hover:text-indigo-300 sm:w-auto"
               onButtonClick={() =>
                 navigate(`/courses/${course._id}`)
               }

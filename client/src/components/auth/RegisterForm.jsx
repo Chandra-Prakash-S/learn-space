@@ -61,17 +61,17 @@ function RegisterForm() {
 
   return (
     <Card className="border border-slate-800 bg-slate-900 shadow-2xl">
-      <CardHeader className="space-y-2">
-        <CardTitle className="text-3xl font-bold text-white">
+      <CardHeader className="space-y-2 p-5 sm:p-6">
+        <CardTitle className="text-2xl sm:text-3xl font-bold text-white">
           Create Account 🚀
         </CardTitle>
 
-        <CardDescription className="text-slate-400">
+        <CardDescription className="text-sm text-slate-400 sm:text-base">
           Join LearnSpace and start your learning journey.
         </CardDescription>
       </CardHeader>
 
-      <CardContent>
+      <CardContent className="p-5 pt-0 sm:p-6 sm:pt-0">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="space-y-5"

@@ -51,9 +51,9 @@ function Courses() {
     <div className="space-y-8">
       <div className="space-y-3">
         <div className="flex items-center gap-3">
-          <BookOpen className="h-7 w-7 text-indigo-400" />
+          <BookOpen className="h-6 w-6 shrink-0 text-indigo-400 sm:h-7 sm:w-7" />
 
-          <h1 className="text-3xl font-bold text-white">
+          <h1 className="text-2xl font-bold text-white sm:text-3xl">
             Course Library
           </h1>
         </div>
@@ -71,7 +71,7 @@ function Courses() {
       </div>
 
       {/* Search & Filters */}
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {/* Search */}
         <div className="relative">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
@@ -81,7 +81,7 @@ function Courses() {
             placeholder="Search courses..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full min-w-0 rounded-lg border border-slate-700 bg-slate-900 py-2 pl-10 pr-3 text-white outline-none transition focus:border-indigo-500"
+            className="w-full min-w-0 rounded-lg border border-slate-700 bg-slate-900 px-3 py-2.5 pl-10 pr-3 text-white outline-none transition focus:border-indigo-500"
           />
         </div>
 
@@ -135,7 +135,7 @@ function Courses() {
       {courses.length === 0 ? (
         <EmptyCourses />
       ) : filteredCourses.length === 0 ? (
-        <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-slate-700 bg-slate-900/40 py-16 text-center">
+        <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-slate-700 bg-slate-900/40 px-6 py-12 sm:py-16 text-center">
           <Search className="mb-4 h-12 w-12 text-slate-500" />
 
           <h3 className="text-xl font-semibold text-white">

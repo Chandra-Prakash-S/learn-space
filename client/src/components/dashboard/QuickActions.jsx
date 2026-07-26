@@ -11,10 +11,10 @@ function QuickActions() {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-wrap items-center gap-4">
+    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:flex lg:flex-wrap lg:gap-4">
       <Button
         onClick={() => navigate("/community")}
-        className="min-w-[170px] gap-2 bg-indigo-600 text-white hover:bg-indigo-600/90"
+        className="w-full gap-2 bg-indigo-600 text-white hover:bg-indigo-600/90 lg:min-w-[170px] lg:w-auto"
       >
         <PlusCircle size={18} />
         Create Post
@@ -22,7 +22,7 @@ function QuickActions() {
 
       <Button
         onClick={() => navigate("/courses")}
-        className="min-w-[170px] gap-2 border border-slate-700 bg-slate-800/60 text-slate-200 hover:border-indigo-500/40 hover:bg-indigo-500/10 hover:text-indigo-300"
+        className="w-full gap-2 border border-slate-700 bg-slate-800/60 text-slate-200 hover:border-indigo-500/40 hover:bg-indigo-500/10 hover:text-indigo-300 lg:min-w-[170px] lg:w-auto"
       >
         <BookOpen size={18} />
         Browse Courses
@@ -30,7 +30,7 @@ function QuickActions() {
 
       <Button
         onClick={() => navigate("/live-sessions")}
-        className="min-w-[170px] gap-2 border border-slate-700 bg-slate-800/60 text-slate-200 hover:border-indigo-500/40 hover:bg-indigo-500/10 hover:text-indigo-300"
+        className="w-full gap-2 border border-slate-700 bg-slate-800/60 text-slate-200 hover:border-indigo-500/40 hover:bg-indigo-500/10 hover:text-indigo-300 lg:min-w-[170px] lg:w-auto"
       >
         <Video size={18} />
         Join Session

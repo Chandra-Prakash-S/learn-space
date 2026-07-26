@@ -3,9 +3,9 @@ import { GraduationCap } from "lucide-react";
 
 import { navigation } from "@/utils/navigation";
 
-function Sidebar() {
+function Sidebar({ onNavigate }) {
   return (
-    <aside className="flex h-full w-64 flex-col border-r border-slate-800 bg-slate-900">
+    <aside className="flex min-h-full w-64 shrink-0 flex-col border-r border-slate-800 bg-slate-900">
       {/* Brand */}
       <div className="border-b border-slate-800 px-6 py-5">
         <div className="flex items-center gap-3">
@@ -26,23 +26,26 @@ function Sidebar() {
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 space-y-2 p-4">
-        {navigation.map(({ label, path, icon: Icon }) => (
-          <NavLink
-            key={path}
-            to={path}
-            className={({ isActive }) =>
-              `flex items-center gap-3 rounded-xl px-4 py-3 transition-all duration-200 ${
-                isActive
-                  ? "bg-indigo-600 text-white shadow-indigo-900/40 shadow-md"
-                  : "text-slate-300 hover:bg-slate-800 hover:text-white"
-              }`
-            }
-          >
-            <Icon size={20} />
-            <span>{label}</span>
-          </NavLink>
-        ))}
+      <nav className="flex-1 overflow-y-auto p-4">
+        <div className="space-y-2">
+          {navigation.map(({ label, path, icon: Icon }) => (
+            <NavLink
+              key={path}
+              to={path}
+              onClick={onNavigate}
+              className={({ isActive }) =>
+                `flex items-center gap-3 rounded-xl px-4 py-3 transition-all duration-200 ${
+                  isActive
+                    ? "bg-indigo-600 text-white shadow-md shadow-indigo-900/40"
+                    : "text-slate-300 hover:bg-slate-800 hover:text-white"
+                }`
+              }
+            >
+              <Icon size={20} className="h-5 w-5 shrink-0" />
+              <span className="truncate">{label}</span>
+            </NavLink>
+          ))}
+        </div>
       </nav>
 
       {/* Footer */}

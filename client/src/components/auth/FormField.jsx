@@ -8,7 +8,7 @@ function FormField({
   children,
 }) {
   return (
-    <div className="space-y-2">
+    <div className="space-y-2.5">
       <Label
         htmlFor={id}
         className="text-slate-200"

@@ -25,7 +25,7 @@ function LiveSessionDetailsCard({ session }) {
   });
 
   return (
-    <div className="rounded-xl border border-slate-800 bg-slate-900 p-8">
+    <div className="rounded-xl border border-slate-800 bg-slate-900 p-5 sm:p-8">
       {/* Status */}
       <div className="mb-6 flex items-center justify-between">
         <span
@@ -41,7 +41,7 @@ function LiveSessionDetailsCard({ session }) {
       </div>
 
       {/* Title */}
-      <h1 className="text-3xl font-bold text-white">
+      <h1 className="text-2xl font-bold sm:text-3xl font-bold text-white">
         {session.title}
       </h1>
 
@@ -51,8 +51,8 @@ function LiveSessionDetailsCard({ session }) {
       </p>
 
       {/* Session Information */}
-      <div className="mt-8 grid gap-6 md:grid-cols-2">
-        <div className="flex items-center gap-3">
+      <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <div className="flex items-start gap-3">
           <User className="h-5 w-5 text-indigo-400" />
           <div>
             <p className="text-sm text-slate-400">
@@ -64,7 +64,7 @@ function LiveSessionDetailsCard({ session }) {
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-start gap-3">
           <CalendarDays className="h-5 w-5 text-indigo-400" />
           <div>
             <p className="text-sm text-slate-400">
@@ -76,7 +76,7 @@ function LiveSessionDetailsCard({ session }) {
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-start gap-3">
           <Clock3 className="h-5 w-5 text-indigo-400" />
           <div>
             <p className="text-sm text-slate-400">
@@ -88,7 +88,7 @@ function LiveSessionDetailsCard({ session }) {
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-start gap-3">
           <Clock3 className="h-5 w-5 text-indigo-400" />
           <div>
             <p className="text-sm text-slate-400">

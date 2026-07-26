@@ -12,14 +12,14 @@ function PostCard({ post }) {
       .toUpperCase() || "U";
 
   return (
-    <div className="rounded-xl border border-slate-800 bg-slate-900 p-5 shadow-sm">
+    <div className="rounded-xl border border-slate-800 bg-slate-900 p-4 sm:p-5 shadow-sm">
       <div className="mb-4 flex items-center gap-3">
-        <Avatar>
+        <Avatar className="h-10 w-10">
           <AvatarFallback>{initials}</AvatarFallback>
         </Avatar>
 
-        <div>
-          <h3 className="font-semibold text-white">
+        <div className="min-w-0">
+          <h3 className="truncate font-semibold text-white">
             {post.author?.name}
           </h3>
 
@@ -34,7 +34,7 @@ function PostCard({ post }) {
         </div>
       </div>
 
-      <p className="whitespace-pre-wrap text-slate-200">
+      <p className="break-words whitespace-pre-wrap text-slate-200">
         {post.content}
       </p>
 

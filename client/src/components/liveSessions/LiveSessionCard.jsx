@@ -25,9 +25,9 @@ function LiveSessionCard({ session }) {
   });
 
   return (
-    <div className="group flex h-full flex-col rounded-xl border border-slate-800 bg-slate-900 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/50 hover:shadow-lg hover:shadow-indigo-500/10">
+    <div className="group flex h-full flex-col rounded-xl border border-slate-800 bg-slate-900 p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/50 hover:shadow-lg hover:shadow-indigo-500/10">
       {/* Status */}
-      <div className="mb-5 flex items-center justify-between">
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-2">
         <span
           className={`rounded-full px-3 py-1 text-xs font-medium ${
             session.status === "upcoming"
@@ -41,7 +41,7 @@ function LiveSessionCard({ session }) {
       </div>
 
       {/* Title */}
-      <h2 className="text-xl font-bold text-white transition-colors group-hover:text-indigo-400">
+      <h2 className="text-lg font-bold sm:text-xl font-bold text-white transition-colors group-hover:text-indigo-400">
         {session.title}
       </h2>
 
@@ -52,17 +52,19 @@ function LiveSessionCard({ session }) {
 
       {/* Meta */}
       <div className="mt-6 space-y-3 text-sm text-slate-300">
-        <div className="flex items-center gap-2">
+        <div className="flex items-start gap-2">
           <User className="h-4 w-4 text-indigo-400" />
-          {session.instructor}
+          <span className="break-words">
+            {session.instructor}
+          </span>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-start gap-2">
           <CalendarDays className="h-4 w-4 text-indigo-400" />
           {formattedDate}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-start gap-2">
           <Clock3 className="h-4 w-4 text-indigo-400" />
           {formattedTime} • {session.duration} mins
         </div>

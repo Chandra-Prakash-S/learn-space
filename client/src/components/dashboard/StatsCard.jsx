@@ -19,13 +19,13 @@ function StatsCard({
         hover:shadow-indigo-500/10
       "
     >
-      <CardContent className="flex items-center justify-between p-6">
+      <CardContent className="flex items-center justify-between gap-4 p-5 sm:p-6">
         <div>
           <p className="text-sm text-slate-400">
             {title}
           </p>
 
-          <h2 className="mt-2 text-3xl font-bold text-white">
+          <h2 className="mt-2 text-2xl font-bold sm:text-3xl text-white">
             {value}
           </h2>
 
@@ -34,8 +34,8 @@ function StatsCard({
           </p>
         </div>
 
-        <div className="rounded-xl bg-indigo-500/10 p-4">
-          <Icon className="h-6 w-6 text-indigo-400" />
+        <div className="rounded-xl bg-indigo-500/10 p-3 sm:p-4">
+          <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-indigo-400" />
         </div>
       </CardContent>
     </Card>

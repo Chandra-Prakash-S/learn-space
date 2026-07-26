@@ -34,7 +34,7 @@ function PostActions({ post }) {
 
   return (
     <>
-      <div className="mt-5 flex items-center gap-6 border-t border-slate-800 pt-4">
+      <div className="mt-5 flex items-center justify-between border-t border-slate-800 pt-4 sm:justify-start sm:gap-6">
         <button
           type="button"
           onClick={handleLike}

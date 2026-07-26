@@ -35,12 +35,8 @@ function StatsGrid() {
     courses
   );
 
-  console.log("Current User:", currentUser);
-console.log("User ID:", userId);
-console.log("Courses:", courses);
-console.log("Overall Progress:", overallProgress);
   return (
-    <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+    <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
       <StatsCard
         title="Courses"
         value={courses.length}

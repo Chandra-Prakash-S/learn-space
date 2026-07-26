@@ -21,7 +21,7 @@ function CourseDetailsCard({ course }) {
 
   return (
     <div className="overflow-hidden rounded-xl border border-slate-800 bg-slate-900">
-      <div className="aspect-[16/6] overflow-hidden border-b border-slate-800 bg-slate-950">
+      <div className="aspect-video md:aspect-[16/6] overflow-hidden border-b border-slate-800 bg-slate-950">
         <img
           src={
             course.thumbnail
@@ -33,7 +33,7 @@ function CourseDetailsCard({ course }) {
         />
       </div>
 
-      <div className="space-y-6 p-6">
+      <div className="space-y-6 p-5 sm:p-6">
         <div className="flex flex-wrap items-center gap-2">
           <span
             className={`rounded-full px-3 py-1 text-xs font-medium ${
@@ -49,7 +49,7 @@ function CourseDetailsCard({ course }) {
         </div>
 
         <div>
-          <h1 className="text-3xl font-bold text-white">
+          <h1 className="text-2xl sm:text-3xl font-bold text-white">
             {course.title}
           </h1>
 
@@ -60,7 +60,7 @@ function CourseDetailsCard({ course }) {
 
         <hr className="border-slate-800" />
 
-        <div className="flex flex-wrap items-center gap-6 text-sm text-slate-400">
+        <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-sm text-slate-400">
           <div className="flex items-center gap-3">
             <Avatar className="h-9 w-9">
               <AvatarFallback>

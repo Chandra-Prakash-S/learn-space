@@ -23,12 +23,12 @@ const PasswordInput = forwardRef(
           variant="ghost"
           size="icon-sm"
           onClick={() => setShowPassword((prev) => !prev)}
-          className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:bg-transparent hover:text-white"
+          className="absolute right-1.5 top-1/2 -translate-y-1/2 text-slate-400 hover:bg-transparent hover:text-white"
         >
           {showPassword ? (
-            <EyeOff className="h-4 w-4" />
+            <EyeOff className="h-5 w-5" />
           ) : (
-            <Eye className="h-4 w-4" />
+            <Eye className="h-5 w-5" />
           )}
         </Button>
       </div>

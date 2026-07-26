@@ -22,10 +22,10 @@ function UpcomingSessions() {
 
   return (
     <Card className="border-slate-800 bg-slate-900">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-white">
-          <Video className="h-5 w-5 text-indigo-400" />
-          Upcoming Sessions
+      <CardHeader className="pb-4">
+        <CardTitle className="flex items-center gap-2 text-lg text-white sm:text-xl">
+          <Video className="h-5 w-5 shrink-0 text-indigo-400" />
+          <span className="truncate">Upcoming Sessions</span>
         </CardTitle>
       </CardHeader>
 
@@ -50,7 +50,7 @@ function UpcomingSessions() {
                 timeStyle: "short",
               })}`}
               buttonText="Join"
-              buttonClassName="bg-green-600 text-white hover:bg-green-500"
+              buttonClassName="w-full bg-green-600 text-white hover:bg-green-500 sm:w-auto"
               onButtonClick={() =>
                 navigate(`/live-sessions/${session._id}`)
               }

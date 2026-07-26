@@ -63,8 +63,8 @@ function CreatePostCard() {
         onSubmit={handleSubmit(onSubmit)}
         className="space-y-4"
       >
-        <div className="flex items-start gap-4">
-          <Avatar>
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
+          <Avatar className="h-10 w-10 shrink-0">
             <AvatarFallback>{initials}</AvatarFallback>
           </Avatar>
 
@@ -82,7 +82,7 @@ function CreatePostCard() {
           </p>
         )}
 
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <span
             className={`text-sm ${
               content.length >= 1000
@@ -98,7 +98,7 @@ function CreatePostCard() {
           <Button
             type="submit"
             disabled={createPostMutation.isPending}
-            className="min-w-32 bg-indigo-600 hover:bg-indigo-500"
+            className="w-full bg-indigo-600 hover:bg-indigo-500 sm:min-w-32 sm:w-auto"
           >
             {createPostMutation.isPending
               ? "Posting..."

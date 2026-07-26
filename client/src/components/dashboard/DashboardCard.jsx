@@ -16,7 +16,7 @@ function DashboardCard({
       className={`border-slate-800 bg-slate-900 ${className}`}
     >
       {(title || Icon) && (
-        <CardHeader>
+        <CardHeader className="pb-4">
           <CardTitle className="flex items-center gap-2 text-white">
             {Icon && (
               <Icon className="h-5 w-5 text-indigo-400" />

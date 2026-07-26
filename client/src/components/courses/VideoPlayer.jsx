@@ -25,13 +25,13 @@ function VideoPlayer({ lesson }) {
       </div>
 
       {/* Lesson Details */}
-      <div className="space-y-5 p-6">
+      <div className="space-y-5 p-4 sm:p-6">
         <div>
           <span className="inline-flex rounded-full bg-indigo-500/20 px-3 py-1 text-xs font-medium text-indigo-400">
             Now Playing
           </span>
 
-          <h2 className="mt-4 text-2xl font-bold text-white">
+          <h2 className="mt-4 text-xl font-bold sm:text-2xl font-bold text-white">
             {lesson.title}
           </h2>
 
@@ -55,7 +55,7 @@ function VideoPlayer({ lesson }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Button className="bg-indigo-600 transition-colors hover:bg-indigo-500">
+          <Button className="w-full bg-indigo-600 transition-colors hover:bg-indigo-500 sm:w-auto">
             <ExternalLink className="mr-2 h-4 w-4" />
             Open in YouTube
           </Button>

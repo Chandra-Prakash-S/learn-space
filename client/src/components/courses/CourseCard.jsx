@@ -33,10 +33,10 @@ function CourseCard({ course }) {
               : "https://placehold.co/600x340?text=Course"
           }
           alt={course.title}
-          className="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="h-40 w-full object-cover transition-transform duration-500 group-hover:scale-105 sm:h-44"
         />
 
-        <div className="space-y-4 p-5">
+        <div className="space-y-4 p-4 sm:p-5">
           <div className="flex flex-wrap items-center gap-2">
             <span
               className={`rounded-full px-3 py-1 text-xs font-medium ${
@@ -52,7 +52,7 @@ function CourseCard({ course }) {
           </div>
 
           <div>
-            <h3 className="line-clamp-2 text-xl font-semibold text-white transition-colors group-hover:text-indigo-400">
+            <h3 className="line-clamp-2 text-lg sm:text-xl font-semibold text-white transition-colors group-hover:text-indigo-400">
               {course.title}
             </h3>
 
@@ -71,7 +71,9 @@ function CourseCard({ course }) {
                 </AvatarFallback>
               </Avatar>
 
-              <span>{course.instructor}</span>
+              <span className="truncate">
+                {course.instructor}
+              </span>
             </div>
 
             <div className="flex items-center gap-2">

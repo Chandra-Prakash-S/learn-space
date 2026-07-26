@@ -100,7 +100,7 @@ function CourseDetails() {
 
       <CourseDetailsCard course={course} />
 
-      <div className="grid gap-8 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         <div className="space-y-4 lg:col-span-2">
           <div className="space-y-2">
             <h2 className="text-2xl font-bold text-white">
@@ -114,13 +114,13 @@ function CourseDetails() {
           </div>
 
           <div className="rounded-xl border border-slate-800 bg-slate-900 p-5">
-            <div className="mb-3 flex items-center justify-between">
-              <h3 className="text-lg font-semibold text-white">
+            <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+              <h3 className="text-base sm:text-lg font-semibold text-white">
                 Learning Progress
               </h3>
 
               <span
-                className={`font-semibold ${
+                className={`text-lg font-semibold ${
                   progress === 100
                     ? "text-emerald-400"
                     : "text-indigo-400"
@@ -139,7 +139,7 @@ function CourseDetails() {
               />
             </div>
 
-            <p className="mt-3 text-sm">
+            <p className="mt-3 break-words text-sm">
               <span className="font-semibold text-emerald-400">
                 {completedLessons.length}
               </span>

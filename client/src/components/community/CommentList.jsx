@@ -22,7 +22,7 @@ function CommentList({ comments }) {
         return (
           <div
             key={comment._id}
-            className="flex gap-3"
+            className="flex items-start gap-3"
           >
             <Avatar className="h-8 w-8">
               <AvatarFallback>
@@ -30,7 +30,7 @@ function CommentList({ comments }) {
               </AvatarFallback>
             </Avatar>
 
-            <div className="rounded-lg bg-slate-800 p-3 flex-1">
+            <div className="flex-1 break-words rounded-lg bg-slate-800 p-3">
               <p className="font-medium text-sm text-white">
                 {comment.user?.name}
               </p>

@@ -2,10 +2,10 @@ import { FileText } from "lucide-react";
 
 function EmptyFeed() {
   return (
-    <div className="rounded-xl border border-dashed border-slate-700 py-16 text-center">
+    <div className="rounded-xl border border-dashed border-slate-700 px-6 py-12 sm:py-16 text-center">
       <FileText className="mx-auto mb-4 h-12 w-12 text-slate-500" />
 
-      <h2 className="text-xl font-semibold text-white">
+      <h2 className="text-lg sm:text-xl font-semibold text-white">
         No posts yet
       </h2>
 
