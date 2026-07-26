@@ -367,7 +367,7 @@ GitHub:
 https://github.com/Chandra-Prakash-S
 
 LinkedIn:
-https://www.linkedin.com/in/chandraprakash/
+https://www.linkedin.com/in/chandra-prakash-it/
 
 ---
 
