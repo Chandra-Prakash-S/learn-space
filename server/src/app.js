@@ -29,7 +29,6 @@ app.use(
   "/uploads",
   express.static(path.join(__dirname, "../public"))
 );
-/* console.log("Serving static from:", path.join(__dirname, "../public")); */
 
 app.use("/api", routes);
 
