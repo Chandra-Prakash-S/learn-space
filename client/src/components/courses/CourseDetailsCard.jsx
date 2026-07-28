@@ -16,6 +16,12 @@ function CourseDetailsCard({
   const BACKEND_URL =
     import.meta.env.VITE_API_URL.replace("/api", "");
 
+  const thumbnailSrc = course.thumbnail
+    ? course.thumbnail.startsWith("http")
+      ? course.thumbnail
+      : `${BACKEND_URL}${course.thumbnail}`
+    : "https://placehold.co/1200x675?text=Course";
+
   const levelClasses = {
     Beginner: "bg-emerald-500/20 text-emerald-400",
     Intermediate: "bg-yellow-500/20 text-yellow-400",
@@ -33,11 +39,7 @@ function CourseDetailsCard({
     <div className="overflow-hidden rounded-xl border border-slate-800 bg-slate-900">
       <div className="aspect-video overflow-hidden border-b border-slate-800 bg-slate-950 md:aspect-[16/6]">
         <img
-          src={
-            course.thumbnail
-              ? `${BACKEND_URL}${course.thumbnail}`
-              : "https://placehold.co/1200x675?text=Course"
-          }
+          src={thumbnailSrc}
           alt={course.title}
           className="h-full w-full object-contain"
         />

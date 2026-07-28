@@ -20,6 +20,12 @@ function CourseCard({ course }) {
 
   const BACKEND_URL = import.meta.env.VITE_API_URL.replace("/api", "");
 
+  const thumbnailSrc = course.thumbnail
+    ? course.thumbnail.startsWith("http")
+      ? course.thumbnail
+      : `${BACKEND_URL}${course.thumbnail}`
+    : "https://placehold.co/600x340?text=Course";
+
   return (
     <Link
       to={`/courses/${course._id}`}
@@ -27,11 +33,7 @@ function CourseCard({ course }) {
     >
       <div className="overflow-hidden rounded-xl border border-slate-800 bg-slate-900 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500 hover:shadow-xl hover:shadow-indigo-500/10">
         <img
-          src={
-            course.thumbnail
-              ? `${BACKEND_URL}${course.thumbnail}`
-              : "https://placehold.co/600x340?text=Course"
-          }
+          src={thumbnailSrc}
           alt={course.title}
           className="h-40 w-full object-cover transition-transform duration-500 group-hover:scale-105 sm:h-44"
         />
